@@ -1,0 +1,32 @@
+.MineContainer {
+    align-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+.row {
+    display: flex;
+}
+
+.row > .col, .row > .displaycol {
+    border: 1px solid;
+    width: 25px;
+    cursor: pointer;
+    height: 25px;
+}
+
+
+.row:nth-of-type(odd) > .col:nth-of-type(odd), .row:nth-of-type(even) > .col:nth-of-type(even) {
+    background: green;
+}
+.row:nth-of-type(odd) > .displaycol:nth-of-type(odd), .row:nth-of-type(even) > .displaycol:nth-of-type(even) {
+    background: grey;
+}
+
+.row:nth-of-type(odd) > .col:nth-of-type(even), .row:nth-of-type(even) > .col:nth-of-type(odd) {
+    background: greenyellow;
+}
+
+.row:nth-of-type(odd) > .displaycol:nth-of-type(even), .row:nth-of-type(even) > .displaycol:nth-of-type(odd) {
+    background: darkgray;
+}
