@@ -23,7 +23,7 @@ class App extends Component {
       <div className="App">
         <form>
           <div className="form-field-container">
-            <label>Select Difficulty: </label>
+            <label>Set Difficulty: </label>
             <select value={this.state.sides} onChange={(e) => this.renderContainer(e)}>
               <option value="0" disabled>Select options</option>
               <option value="9">Beginner (9x9)</option>
