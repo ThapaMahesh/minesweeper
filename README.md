@@ -1,9 +1,9 @@
 # Minesweeper Game
 Web based minesweeper game developed with ReactJS
 
-![alt text](https://github.com/ThapaMahesh/public/images/minesweeper.PNG)
-![alt text](https://github.com/ThapaMahesh/public/images/minesweeper-lost.PNG)
-![alt text](https://github.com/ThapaMahesh/public/images/minesweeper-select.PNG)
+![alt text](https://github.com/ThapaMahesh/minesweeper/blob/master/public/images/minesweeper.PNG?raw=true)
+![alt text](https://github.com/ThapaMahesh/minesweeper/blob/master/public/images/minesweeper-lost.PNG?raw=true)
+![alt text](https://github.com/ThapaMahesh/minesweeper/blob/master/public/images/minesweeper-select.PNG?raw=true)
 
 ## Available Scripts
 
