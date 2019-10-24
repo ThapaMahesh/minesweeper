@@ -1,6 +1,10 @@
 # Minesweeper Game
 Web based minesweeper game developed with ReactJS
 
+![alt text](https://github.com/ThapaMahesh/public/images/minesweeper.PNG)
+![alt text](https://github.com/ThapaMahesh/public/images/minesweeper-lost.PNG)
+![alt text](https://github.com/ThapaMahesh/public/images/minesweeper-select.PNG)
+
 ## Available Scripts
 
 In the project directory, you can run:
