@@ -11,7 +11,7 @@ class App extends Component {
       sides: 0
     }
 
-    this.mines = {9: 10, 16: 40, 24: 99};
+    this.mines = {0: 0, 9: 10, 16: 40, 24: 99};
   }
 
   renderContainer = (e) => {

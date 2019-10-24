@@ -11,7 +11,7 @@
 .settings{
     display: grid;
     align-items: center;
-    grid-template-columns: auto auto auto;
+    grid-template-columns: 33% 33% 33%;
 }
 .reset:active{
     border: inset;
