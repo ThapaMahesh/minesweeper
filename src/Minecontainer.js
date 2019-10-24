@@ -14,12 +14,12 @@ class Minecontainer extends Component {
             playboard: [],
             status: 'playing',
             mines: 0,
-            timer: 0
+            time: 0
         }
-        this.timer = null;
-        this.minesCount = 0;
-        this.newBoardData = {};
-        this.tempboard = [];
+        this.timer = null; // time interval
+        this.minesCount = 0; // count the remaining mines and we update the state
+        this.newBoardData = {}; // hold the board data including, minesPosition and empty board
+        this.tempboard = []; //temp board we update on and then finally to the state playboard
     }
 
     componentDidMount = () => {
@@ -28,7 +28,7 @@ class Minecontainer extends Component {
         this.minesCount = mines;
         this.newBoardData = this.services.createNewMine(sides, mines);
         this.tempboard = JSON.parse(JSON.stringify( this.newBoardData.tempboard ));
-        this.setState({playboard: this.newBoardData.tempboard, status: "playing", mines: mines, timer: 0});
+        this.setState({playboard: this.newBoardData.tempboard, status: "playing", mines: mines, time: 0});
     }
 
     componentDidUpdate = (prevprops) => {
@@ -38,9 +38,10 @@ class Minecontainer extends Component {
     }
 
     setTimer = () => {
+        // on first click initiate the timer
         if(this.timer === null){
             this.timer = setInterval(() => {
-                this.setState({timer: this.state.timer + 1});
+                this.setState({time: this.state.time + 1});
             }, 1000);
         }
     }
@@ -90,12 +91,13 @@ class Minecontainer extends Component {
                 }
             }
         }
+        // if the position is flagged then remove the flag and update mine counter
         if(this.tempboard[row][col] === "F"){
             ++this.minesCount;
         }
         this.tempboard[row][col] = (this.newBoardData.actualboard[row][col] === 0) ? "" : this.newBoardData.actualboard[row][col];
         if(count === 0){
-            // none of the neighbor is a mine so show them all
+            // none of the neighbor is a mine so check recursively if their neighbor is not mine as well
             list.forEach(element => {
                 if(this.tempboard[element[0]][element[1]] === 0 || this.tempboard[element[0]][element[1]] === "F"){
                     this.showNeighbor(element[0], element[1]);
@@ -106,7 +108,7 @@ class Minecontainer extends Component {
 
     verifyMines = () => {
         let count = 0;
-        this.newBoardData.minesPosition.map(eachMine => {
+        this.newBoardData.minesPosition.forEach(eachMine => {
             if(this.tempboard[eachMine[0]][eachMine[1]] === "F"){
                 ++count;
             }
@@ -143,12 +145,12 @@ class Minecontainer extends Component {
         return (
             <div>
                 <Fireworks status={this.state.status} />
-                <Modal status={this.state.status} timer={this.state.timer} restart={() => this.reset()} />
+                <Modal status={this.state.status} time={this.state.time} restart={() => this.reset()} />
                 <div className="MineContainer">
                     <div className="playContainer">
                         <div className="settings">
                             <div className="timer">
-                                {this.state.timer}
+                                {this.state.time}
                             </div>
                             <div>
                                 <button className="reset" onClick={() => this.reset()}><FaUndoAlt /></button>
@@ -163,7 +165,7 @@ class Minecontainer extends Component {
                             return (
                                 <div key={row} className="row">
                                     { rowArray.map((item, col) => 
-                                        <div data-item={item} className={(item === 0) || (item === "F") ? "col" : "displaycol"} onClick={() => this.checkMine(row, col)} onContextMenu={(e) => this.setFlags(e, row, col)}>
+                                        <div key={row + "" + col} className={(item === 0) || (item === "F") ? "col" : "displaycol"} onClick={() => this.checkMine(row, col)} onContextMenu={(e) => this.setFlags(e, row, col)}>
                                             {
                                                 (item === 0) ? "" : (
                                                     (item === "*") ? <FaGhost /> : (

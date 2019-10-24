@@ -18,11 +18,12 @@ class Services{
             }
         }
 
-        for (let row = 0; row < sides; row++) {
+        // create empty board for play
+        for (let row = 0; row < boardSize; row++) {
             if(!Array.isArray(emptyboard[row])){
                 emptyboard[row] = [];
             }
-            for (let col = 0; col < sides; col++) {
+            for (let col = 0; col < boardSize; col++) {
                 emptyboard[row][col] = 0;
             }
         }
@@ -34,6 +35,7 @@ class Services{
         while(mines > 0){
             let row = this.randomIndex(sides);
             let col = this.randomIndex(sides);
+            // we don't want mines in the boundry, we'll remove boundry later
             if(row === 0 || row === sides-1 || col === 0 || col === sides-1){
                 continue;
             }
@@ -56,23 +58,15 @@ class Services{
             }
         }
         
+        // remove the boundry row and column
         board.splice(0, 1);
-        emptyboard.splice(0, 1);
-
         board.splice(boardSize, 1);
-        emptyboard.splice(boardSize, 1);
 
         board = board.map(function(val){
             return val.slice(0, -1);
         });
-        emptyboard = emptyboard.map(function(val){
-            return val.slice(0, -1);
-        });
 
         board = board.map(function(val){
-            return val.slice(1);
-        });
-        emptyboard = emptyboard.map(function(val){
             return val.slice(1);
         });
 

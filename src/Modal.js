@@ -4,9 +4,6 @@ import './Modal.css';
 
 
 class Modal extends Component{
-    constructor(props){
-        super(props);
-    }
 
     render(){
         if(this.props.status === "playing"){
@@ -14,15 +11,16 @@ class Modal extends Component{
         }
         let message = this.props.status === "win" ? "Congratulations! You Won." : "You Lost";
         let icon = this.props.status === "win" ? <FaRegSmileBeam /> : <FaRegSadCry />;
+        
         return(
-            <div id="myModal" class="modal">
+            <div id="myModal" className="modal">
                 <div class="modal-content">
                     {/* <span onClick={() => this.props.restart()} class="close">&times;</span> */}
                     <p>
                        {icon}
                     </p>
                     <p>{message}</p>
-                    <p>Time: {this.props.timer}</p>
+                    <p>Time: {this.props.time}</p>
                     <button onClick={() => this.props.restart()}>Play Again!</button>
                 </div>
             </div>
