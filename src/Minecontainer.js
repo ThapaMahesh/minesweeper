@@ -136,6 +136,10 @@ class Minecontainer extends Component {
     }
 
     render(){
+        if(this.props.sides === 0){
+            return null;
+        }
+        
         return (
             <div>
                 <Fireworks status={this.state.status} />
