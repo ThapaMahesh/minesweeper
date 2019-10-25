@@ -33,7 +33,7 @@ class Minecontainer extends Component {
 
     componentDidUpdate = (prevprops) => {
         if(this.props.sides !== prevprops.sides){
-            this.componentDidMount();
+            this.reset();
         }
     }
 
