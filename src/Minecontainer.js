@@ -179,6 +179,7 @@ class Minecontainer extends Component {
                             })
                             }
                         </div>
+                        <p>Note: You must flag all mines to win.</p>
                     </div>
                 </div>
             </div>
