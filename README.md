@@ -5,6 +5,8 @@ Web based minesweeper game developed with ReactJS
 ![alt text](https://github.com/ThapaMahesh/minesweeper/blob/master/public/images/minesweeper-lost.PNG?raw=true)
 ![alt text](https://github.com/ThapaMahesh/minesweeper/blob/master/public/images/minesweeper-select.PNG?raw=true)
 
+## [https://mystifying-agnesi-f3e0d6.netlify.com/](Demo)
+
 ## Available Scripts
 
 In the project directory, you can run:
